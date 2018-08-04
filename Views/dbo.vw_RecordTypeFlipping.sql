@@ -1,0 +1,23 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+CREATE VIEW [dbo].[vw_RecordTypeFlipping]
+
+AS
+
+SELECT prod.Id
+FROM KingsCI_Reporting.prodcopy.account prod
+WHERE prod.id IN (
+'0013600000bbWwFAAU',
+'0013600000bcThmAAE',
+'0013600000bbyetAAA',
+'0013600001Hu8mJAAR',
+'00136000018CgxdAAC',
+'0013600001HtzX4AAJ',
+'0013600000bcVcpAAE')
+UNION 
+SELECT DISTINCT id FROM dbo.recordflippingids
+
+
+GO

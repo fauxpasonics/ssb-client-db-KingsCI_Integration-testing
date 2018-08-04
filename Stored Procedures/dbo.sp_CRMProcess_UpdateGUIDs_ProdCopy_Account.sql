@@ -1,0 +1,17 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+
+
+CREATE PROC [dbo].[sp_CRMProcess_UpdateGUIDs_ProdCopy_Account]
+AS
+
+
+UPDATE A 
+	SET SSB_CRMSYSTEM_ACCT_ID__c = b.SSB_CRMSYSTEM_ACCT_ID__c
+FROM KingsCI_Reporting.ProdCopy.Account A
+INNER JOIN [dbo].[vwCRMProcess_UpdateGUIDs_ProdCopyAccount] b
+	ON a.id = b.ID
+WHERE a.SSB_CRMSYSTEM_ACCT_ID__c IS NULL OR a.SSB_CRMSYSTEM_ACCT_ID__c <> b.SSB_CRMSYSTEM_ACCT_ID__c
+GO
